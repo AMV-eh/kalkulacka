@@ -33,4 +33,7 @@
 **/obj/*
 
 # VS files
-src/Calculator/.vs
+**/.vs
+
+
+# other files
