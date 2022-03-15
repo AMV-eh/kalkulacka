@@ -1,19 +1,18 @@
-Prostredi
+## Prostredi
+
 ---------
+<!---Ubuntu 64bit-->
+`Windows 64bit`
 
-Ubuntu 64bit
-Windows 64bit
 
-Autori
-------
+## Autori
 
-Nazev tymu
-- xlogin01 jmeno prijmeni 
-- xlogin02 jmeno prijmeni 
-- xlogin03 jmeno prijmeni 
-- xlogin04 jmeno prijmeni 
+Nazev tymu: `eh`
+- `xkalaa00` Adam Kala 
+- `xnguye22` Hoang Nam Nguyen 
+- `xwagne12` Michal Wagner 
 
-Licence
+## Licence
 -------
 
-Tento program je poskytovan...
+Tento program je poskytovan pod licenci GNU General Public License
