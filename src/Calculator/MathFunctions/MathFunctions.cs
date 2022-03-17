@@ -21,5 +21,35 @@ namespace MathFunctions
         {
             return a + b;
         }
+
+        public float Substract(float a, float b)
+        {
+            throw new NotImplementedException();
+        }
+
+        public float Multiply(float a, float b)
+        {
+            throw new NotImplementedException();
+        }
+
+        public float Divide(float a, float b)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Factorial(int a)
+        {
+            throw new NotImplementedException();
+        }
+
+        public float Power(float a, uint b)
+        {
+            throw new NotImplementedException();
+        }
+
+        public float Root(float a, uint b)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
