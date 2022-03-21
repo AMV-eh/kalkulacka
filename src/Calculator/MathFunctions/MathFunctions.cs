@@ -42,12 +42,18 @@ namespace MathFunctions
             throw new NotImplementedException();
         }
 
-        public float Power(float a, uint b)
+        public float Power(float a, int b)
         {
             throw new NotImplementedException();
         }
 
-        public float Root(float a, uint b)
+        public float Root(float a, int b)
+        {
+            throw new NotImplementedException();
+        }
+
+        // TODO: one more math function
+        public float TODO(float a)
         {
             throw new NotImplementedException();
         }
