@@ -85,5 +85,79 @@ namespace MathFunctionTests
         {
             Assert.Throws<DivideByZeroException>(() => mathFunctions.Divide(value1, value2));
         }
+
+        [Theory]
+        [InlineData(0, 1)]
+        [InlineData(1, 1)]
+        [InlineData(2, 2)]
+        [InlineData(5, 120)]
+        [InlineData(10, 3628800)]
+        public void TestFactorial(int value1, float expected_result)
+        {
+            Assert.Equal(mathFunctions.Factorial(value1), expected_result);
+        }
+
+        [Theory]
+        [InlineData(-1)]
+        [InlineData(-10)]
+        [InlineData(int.MinValue)]
+        public void TestFactorialNegative(int value1)
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => mathFunctions.Factorial(value1));
+        }
+
+        
+        [Theory]
+        [InlineData(5F, 0, 1F)]
+        [InlineData(10F, 1, 10F)]
+        [InlineData(0.5, 2, 0.25F)]
+        [InlineData(-0.5, 3, -0.125F)]
+        [InlineData(-5F, 2, 25F)]
+        [InlineData(-5F, 3, -125F)]
+        [InlineData(1, float.MaxValue, 1)]
+        [InlineData(float.MaxValue, 1, float.MaxValue)]
+        [InlineData(float.MinValue, 1, float.MinValue)]
+        [InlineData(float.MaxValue, 0, 1)]
+        [InlineData(float.MinValue, 0, 1)]
+        public void TestPower(float value1, int value2, float expected_result)
+        {
+            Assert.Equal(mathFunctions.Power(value1, value2), expected_result);
+        }
+
+        [Theory]
+        [InlineData(10, -1)]
+        [InlineData(3, -10)]
+        [InlineData(5, int.MinValue)]
+        public void TestPowerNegative(float value1, int value2)
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => mathFunctions.Power(value1, value2));
+        }
+
+        [Theory]
+        [InlineData(10F, 1, 10F)]
+        [InlineData(25F, 2, 5F)]
+        [InlineData(0.25F, 2, 0.5F)]
+        [InlineData(-0.125F, 3, -0.5F)]
+        [InlineData(-125F, 3, -5F)]
+        [InlineData(-1000000F, 3, -100F)]
+        [InlineData(float.MaxValue, 1, float.MaxValue)]
+        [InlineData(float.MinValue, 1, float.MinValue)]
+        [InlineData(1, int.MaxValue, 1)]
+        public void TestRoot(float value1, int value2, float expected_result)
+        {
+            Assert.Equal(mathFunctions.Root(value1, value2), expected_result);
+        }
+
+        [Theory]
+        [InlineData(1, 0)]
+        [InlineData(10, -1)]
+        [InlineData(3, -10)]
+        [InlineData(5, int.MinValue)]
+        public void TestRootNegative(float value1, int value2)
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => mathFunctions.Root(value1, value2));
+        }
+
+        // TODO: create one more math function
     }
 }
