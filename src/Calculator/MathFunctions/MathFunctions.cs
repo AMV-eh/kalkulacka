@@ -103,7 +103,9 @@ namespace MathFunctions
             }
             else
             {
-                // if "b" is odd and "a" is negative, function Math.Pow() returns NaN
+                // if "b" is odd and "a" is negative, function Math.Pow() returns NaN instead of negative result
+                // we use "-a" -> (negative "a") and calculate nth root of it, then return "-result" -> negative result
+
                 // Rounding number to X digits to eliminate inaccuracy
                 double result = -Math.Pow(-a, 1F / b);
                 return (float)Math.Round(result, round_coeficient);
