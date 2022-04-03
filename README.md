@@ -12,9 +12,7 @@ Nazev tymu: `eh`
 - `xnguye22` Hoang Nam Nguyen 
 - `xwagne12` Michal Wagner 
 
-
-
 ## Licence
 -------
 
-Tento program je poskytovan pod licenci [GNU General Public License](LICENSE)
+Tento program je poskytovan pod licenci GNU General Public License

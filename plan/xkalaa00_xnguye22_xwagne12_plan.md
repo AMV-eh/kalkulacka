@@ -34,7 +34,7 @@
 
 # Sprava verzi
 - GitHub (https://github.com/AMV-eh/kalkulacka)
-- Trello (https://trello.com/invite/b/FlqesdR8/f1d07214984edf98cbafabee43a84872/kalkulacka) / (https://trello.com/b/FlqesdR8/kalkulacka)
+- Trello (https://trello.com/invite/b/FlqesdR8/f1d07214984edf98cbafabee43a84872/kalkulacka)
 
 
 
