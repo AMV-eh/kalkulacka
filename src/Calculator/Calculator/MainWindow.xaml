@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="445" Width="840">
+        Title="MainWindow" Height="480" Width="840">
     <Grid UseLayoutRounding="False">
         <Button Content="fib" HorizontalAlignment="Left" Height="75" Margin="310,331,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="36" BorderBrush="Black" BorderThickness="2" OpacityMask="Black" Padding="1,1,1,4">
             <Button.Resources>
@@ -175,7 +175,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <TextBox HorizontalAlignment="Center" Height="93" Margin="0,25,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="790" TextChanged="TextBox_TextChanged" Background="#FFDDDDDD" BorderBrush="Black" BorderThickness="4" OpacityMask="Black" FontSize="72" TextAlignment="Right">
+        <TextBox HorizontalAlignment="Center" Height="93" Margin="0,25,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="790" Background="#FFDDDDDD" BorderBrush="Black" BorderThickness="4" OpacityMask="Black" FontSize="72" TextAlignment="Right">
             <TextBox.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
