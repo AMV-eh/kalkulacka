@@ -24,6 +24,10 @@ namespace Calculator
     {
         private MathFunction MathFunction { get; set; }
         private CalcAction CalcAction { get; set; }
+        float resultValue = 0;
+        String performedOperation = "";
+        float valueStack = 0;
+        bool isPerformed = false;
         public MainWindow()
         {
             MathFunction = new MathFunction();
@@ -32,6 +36,9 @@ namespace Calculator
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if ((resultTextBox.Text == "0") || isPerformed)
+                resultTextBox.Clear();
+            isPerformed = false;
             Button button = (Button)sender;
             resultTextBox.Text += button.Content;
         }
@@ -49,6 +56,24 @@ namespace Calculator
         private void Button_Plus_Click(object sender, RoutedEventArgs e)
         {
             CalcAction = CalcAction.Plus;
+            Button button = (Button)sender;
+            //float r = float.Parse(resultTextBox.Text);
+            performedOperation = button.Content.ToString();
+            resultValue = float.Parse(resultTextBox.Text);
+            valueStack = MathFunction.Sum(resultValue, valueStack);
+            isPerformed = true;
+        }
+
+        private void Button_EQ_Click(object sender, RoutedEventArgs e)
+        {
+            switch(performedOperation)
+            {
+                case "+":
+                    float sum = MathFunction.Sum(valueStack,float.Parse(resultTextBox.Text));
+                    resultTextBox.Text = $"{sum}";
+                    valueStack = sum;
+                    break;
+            }
         }
     }
 }
