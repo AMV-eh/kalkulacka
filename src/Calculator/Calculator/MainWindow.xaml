@@ -35,14 +35,14 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="5" HorizontalAlignment="Left" Height="75" Margin="550,236,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="36" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black" UseLayoutRounding="False" RenderTransformOrigin="0,0">
+        <Button Content="5" HorizontalAlignment="Left" Height="75" Margin="550,236,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="36" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black" UseLayoutRounding="False" RenderTransformOrigin="0,0" Click="Button_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="+" HorizontalAlignment="Left" Height="75" Margin="25,331,0,0" VerticalAlignment="Top" Width="75" FontSize="36" FontWeight="Bold" BorderBrush="Black" BorderThickness="2" OpacityMask="Black" Padding="1,1,1,10">
+        <Button Content="+" HorizontalAlignment="Left" Height="75" Margin="25,331,0,0" VerticalAlignment="Top" Width="75" FontSize="36" FontWeight="Bold" BorderBrush="Black" BorderThickness="2" OpacityMask="Black" Padding="1,1,1,10" Click="Button_Plus_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -63,21 +63,21 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="1" HorizontalAlignment="Left" Height="75" Margin="455,331,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="36" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black">
+        <Button Content="1" HorizontalAlignment="Left" Height="75" Margin="455,331,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="36" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black" Click="Button_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="3" HorizontalAlignment="Left" Height="75" Margin="645,331,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="36" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black">
+        <Button Content="3" HorizontalAlignment="Left" Height="75" Margin="645,331,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="36" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black" Click="Button_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="2" HorizontalAlignment="Left" Height="75" Margin="550,331,0,0" VerticalAlignment="Top" Width="75" FontSize="36" FontWeight="Bold" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black">
+        <Button Content="2" HorizontalAlignment="Left" Height="75" Margin="550,331,0,0" VerticalAlignment="Top" Width="75" FontSize="36" FontWeight="Bold" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black" Click="Button_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -98,14 +98,14 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="4" HorizontalAlignment="Left" Height="75" Margin="455,236,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="36" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black">
+        <Button Content="4" HorizontalAlignment="Left" Height="75" Margin="455,236,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="36" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black" Click="Button_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="6" HorizontalAlignment="Left" Height="75" Margin="645,236,0,0" VerticalAlignment="Top" Width="75" FontSize="36" FontWeight="Bold" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black">
+        <Button Content="6" HorizontalAlignment="Left" Height="75" Margin="645,236,0,0" VerticalAlignment="Top" Width="75" FontSize="36" FontWeight="Bold" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black" Click="Button_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -133,21 +133,21 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="7" HorizontalAlignment="Left" Height="75" Margin="455,141,0,0" VerticalAlignment="Top" Width="75" FontSize="36" FontWeight="Bold" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black">
+        <Button Content="7" HorizontalAlignment="Left" Height="75" Margin="455,141,0,0" VerticalAlignment="Top" Width="75" FontSize="36" FontWeight="Bold" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black" Click="Button_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="8" HorizontalAlignment="Left" Height="75" Margin="550,141,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="36" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black">
+        <Button Content="8" HorizontalAlignment="Left" Height="75" Margin="550,141,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="36" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black" Click="Button_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="9" HorizontalAlignment="Left" Height="75" Margin="645,141,0,0" VerticalAlignment="Top" Width="75" FontSize="36" FontWeight="Bold" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black">
+        <Button Content="9" HorizontalAlignment="Left" Height="75" Margin="645,141,0,0" VerticalAlignment="Top" Width="75" FontSize="36" FontWeight="Bold" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black" Click="Button_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -161,21 +161,21 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="n!" HorizontalAlignment="Left" Height="75" Margin="25,141,0,0" VerticalAlignment="Top" Width="75" FontSize="36" FontWeight="Bold" FontStyle="Normal" BorderBrush="Black" BorderThickness="2" OpacityMask="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="1,1,1,5">
+        <Button Content="n!" HorizontalAlignment="Left" Height="75" Margin="25,141,0,0" VerticalAlignment="Top" Width="75" FontSize="36" FontWeight="Bold" FontStyle="Normal" BorderBrush="Black" BorderThickness="2" OpacityMask="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="1,1,1,5" Click="Button_Click_Factorial">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="," HorizontalAlignment="Left" Height="75" Margin="740,141,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="36" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black">
+        <Button Content="," HorizontalAlignment="Left" Height="75" Margin="740,141,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="36" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black" Click="Button_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <TextBox HorizontalAlignment="Center" Height="93" Margin="0,25,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="790" Background="#FFDDDDDD" BorderBrush="Black" BorderThickness="4" OpacityMask="Black" FontSize="72" TextAlignment="Right">
+        <TextBox x:Name="resultTextBox" HorizontalAlignment="Center" Height="93" Margin="0,25,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="790" Background="#FFDDDDDD" BorderBrush="Black" BorderThickness="4" OpacityMask="Black" FontSize="72" TextAlignment="Right">
             <TextBox.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
