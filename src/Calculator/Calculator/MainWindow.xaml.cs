@@ -25,29 +25,32 @@ namespace Calculator
         private MathFunction MathFunction { get; set; }
         private OperationEnum CalcAction { get; set; }
 
+        private OperationEnum LastOperation { get; set; }
+
         private float? valueStack;
+
+        private string LastResult { get; set; } = "0";
 
         public MainWindow()
         {
-            MathFunction = new MathFunction();
+            MathFunction = MathFunction.GetInstance();
             InitializeComponent();
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (CalcAction != OperationEnum.Number)
+            if (LastOperation != OperationEnum.Number)
             {
-                resultTextBox.Clear();
+                resultTextBox.Text = "0";
+                LastOperation = OperationEnum.Number;
             }
 
-            CalcAction = OperationEnum.Number;
-
             Button button = (Button)sender;
-            resultTextBox.Text = resultTextBox.Text + button.Content;
+            resultTextBox.Text = float.Parse(resultTextBox.Text + button.Content).ToString();
         }
 
-        private void Button_Click_Factorial(object sender, RoutedEventArgs e)
+        private void Button_Factorial_Click(object sender, RoutedEventArgs e)
         {
             int a;
             int.TryParse(resultTextBox.Text, out a);
@@ -59,16 +62,77 @@ namespace Calculator
 
         private void Button_Plus_Click(object sender, RoutedEventArgs e)
         {
-            CalcAction = OperationEnum.Plus;
+            if (!Process())
+            {
+                return;
+            }
+            
+            CalcAction = OperationEnum.Sum;
+            LastOperation = OperationEnum.Sum;
+        }
+
+        private void Button_Minus_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Process())
+            {
+                return;
+            }
+
+            CalcAction = OperationEnum.Substract;
+            LastOperation = OperationEnum.Substract;
+        }
+
+        private void Button_Result_Click(object sender, RoutedEventArgs e)
+        {
+            if (valueStack != null)
+            {
+                resultTextBox.Text = OperationHelper.GetResult(CalcAction, (float)valueStack, float.Parse(resultTextBox.Text));
+                valueStack = float.Parse(resultTextBox.Text);
+            }
+            CalcAction = OperationEnum.Result;
+            LastOperation = OperationEnum.Result;
+        }
+
+        private void Button_Clear_Click(object sender, RoutedEventArgs e)
+        {
+            resultTextBox.Text = "0";
+            valueStack = null;
+            CalcAction = OperationEnum.NoOperation;
+        }
+
+        private void resultTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            float result;
+            bool valid = float.TryParse(resultTextBox.Text, out result);
+
+            if (valid)
+            {
+                LastResult = result.ToString();
+            }
+            else
+            {
+                resultTextBox.Text = LastResult;
+            }
+        }
+
+        private bool Process()
+        {
+            if (LastOperation != OperationEnum.Number && LastOperation != OperationEnum.NoOperation)
+            {
+                return false ;
+            }
+
             if (valueStack == null)
             {
                 valueStack = float.Parse(resultTextBox.Text);
             }
             else
             {
-                valueStack = float.Parse(resultTextBox.Text) + (float)valueStack;
+                resultTextBox.Text = OperationHelper.GetResult(CalcAction, (float)valueStack, float.Parse(resultTextBox.Text));
+                valueStack = float.Parse(resultTextBox.Text);
             }
-            resultTextBox.Text = valueStack.ToString();
+
+            return true;
         }
     }
 }
