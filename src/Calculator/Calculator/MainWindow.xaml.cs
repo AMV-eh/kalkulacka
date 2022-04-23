@@ -136,12 +136,14 @@ namespace Calculator
             if (valid)
             {
                 LastResult = resultText;
-                resultTextBox.Text = resultText;
+                resultTextBox.Text = result.ToString();
             }
             else
             {
                 resultTextBox.Text = LastResult;
             }
+
+            resultTextBox.Select(resultTextBox.Text.Length, 0);
         }
 
         private bool Process()
