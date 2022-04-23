@@ -154,5 +154,76 @@ namespace Calculator
 
             return true;
         }
+
+        private void Button_Multiply_Click(object sender, RoutedEventArgs e)
+        {
+            Process();
+            CalcAction = OperationEnum.Multiply;
+        }
+
+        private void Button_Divide_Click(object sender, RoutedEventArgs e)
+        {
+            Process();
+            CalcAction = OperationEnum.Divide;
+        }
+
+        private void Button_Pi_Click(object sender, RoutedEventArgs e)
+        {
+            if (LastOperation != OperationEnum.Number)
+            {
+                resultTextBox.Text = "0";
+                LastOperation = OperationEnum.Number;
+            }
+
+            Button button = (Button)sender;
+            resultTextBox.Text = double.Parse(resultTextBox.Text + Math.PI).ToString();
+        }
+
+        private void Button_E_Click(object sender, RoutedEventArgs e)
+        {
+            if (LastOperation != OperationEnum.Number)
+            {
+                resultTextBox.Text = "0";
+                LastOperation = OperationEnum.Number;
+            }
+
+            Button button = (Button)sender;
+            resultTextBox.Text = double.Parse(resultTextBox.Text + Math.E).ToString();
+
+        }
+
+        private void Button_n2_Click(object sender, RoutedEventArgs e)
+        {
+            if (LastOperation != OperationEnum.Number)
+            {
+                resultTextBox.Text = "0";
+                LastOperation = OperationEnum.Number;
+            }
+            Button button = (Button)sender;
+            double cont = double.Parse(resultTextBox.Text);
+            resultTextBox.Text = Math.Pow(cont,2).ToString();
+        }
+
+        private void Button_nx_Click(object sender, RoutedEventArgs e)
+        {
+            Process();
+            CalcAction = OperationEnum.Power;
+        }
+
+        private void Button_Root_Click(object sender, RoutedEventArgs e)
+        {
+            Process();
+            CalcAction = OperationEnum.Root;
+        }
+
+        private void Button_fib_Click(object sender, RoutedEventArgs e)
+        {
+            int a;
+            int.TryParse(resultTextBox.Text, out a);
+
+            int result = (int)MathFunction.Fibbonacci(a);
+
+            resultTextBox.Text = $"{result}";
+        }
     }
 }

@@ -3,6 +3,7 @@ using MathFunctions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 
 namespace Calculator
 {
@@ -35,7 +36,14 @@ namespace Calculator
                 case OperationEnum.Multiply:
                     return MathFunction.Multiply(operand1, op2).ToString();
                 case OperationEnum.Divide:
-                    return MathFunction.Divide(operand1, op2).ToString();
+                    if(op2 == 0)
+                    {
+                        MessageBox.Show("Nulou dělit nelze!");
+                        break;
+                    }
+                    else { 
+                        return MathFunction.Divide(operand1, op2).ToString();
+                    }
                 case OperationEnum.Factorial:
                     return MathFunction.Factorial((int)operand1).ToString();
                 case OperationEnum.Power:
@@ -43,8 +51,15 @@ namespace Calculator
                 case OperationEnum.Root:
                     return MathFunction.Root(operand1, (int)op2).ToString();
                 case OperationEnum.Fibonnacci:
-                    //return MathFunction.Fibonnacci(operand1, op2).ToString();
-                    break;
+                    if (operand1 < 0)
+                    {
+                        MessageBox.Show("Nelze použít číslo menší jak 0!");
+                        break;
+                    }
+                    else
+                    {
+                        return MathFunction.Fibbonacci((int)operand1).ToString();
+                    }
             }
 
             return null;
