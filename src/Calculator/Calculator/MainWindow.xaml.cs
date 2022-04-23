@@ -1,19 +1,7 @@
 ﻿using Calculator.Models;
 using MathFunctions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Calculator
 {
@@ -34,6 +22,8 @@ namespace Calculator
         public MainWindow()
         {
             MathFunction = MathFunction.GetInstance();
+            CalcAction = OperationEnum.NoOperation;
+            LastOperation = OperationEnum.NoOperation;
             InitializeComponent();
 
         }
@@ -62,24 +52,14 @@ namespace Calculator
 
         private void Button_Plus_Click(object sender, RoutedEventArgs e)
         {
-            if (!Process())
-            {
-                return;
-            }
-            
+            Process();
             CalcAction = OperationEnum.Sum;
-            LastOperation = OperationEnum.Sum;
         }
 
         private void Button_Minus_Click(object sender, RoutedEventArgs e)
         {
-            if (!Process())
-            {
-                return;
-            }
-
+            Process();
             CalcAction = OperationEnum.Substract;
-            LastOperation = OperationEnum.Substract;
         }
 
         private void Button_Result_Click(object sender, RoutedEventArgs e)
@@ -89,8 +69,8 @@ namespace Calculator
                 resultTextBox.Text = OperationHelper.GetResult(CalcAction, (float)valueStack, float.Parse(resultTextBox.Text));
                 valueStack = float.Parse(resultTextBox.Text);
             }
-            CalcAction = OperationEnum.Result;
             LastOperation = OperationEnum.Result;
+            CalcAction = OperationEnum.Result;
         }
 
         private void Button_Clear_Click(object sender, RoutedEventArgs e)
@@ -117,9 +97,20 @@ namespace Calculator
 
         private bool Process()
         {
+            //if (LastOperation == OperationEnum.Sum ||
+            //    LastOperation == OperationEnum.Substract ||
+            //    LastOperation == OperationEnum.Multiply ||
+            //    LastOperation == OperationEnum.Divide ||
+            //    LastOperation == OperationEnum.Factorial ||
+            //    LastOperation == OperationEnum.Power ||
+            //    LastOperation == OperationEnum.Root ||
+            //    LastOperation == OperationEnum.Fibonnacci)
+            //{
+            //    CalcAction = LastOperation;
+            //}
             if (LastOperation != OperationEnum.Number && LastOperation != OperationEnum.NoOperation)
             {
-                return false ;
+                return false;
             }
 
             if (valueStack == null)
@@ -131,6 +122,8 @@ namespace Calculator
                 resultTextBox.Text = OperationHelper.GetResult(CalcAction, (float)valueStack, float.Parse(resultTextBox.Text));
                 valueStack = float.Parse(resultTextBox.Text);
             }
+
+            LastOperation = CalcAction;
 
             return true;
         }
