@@ -167,6 +167,25 @@ namespace MathFunctionTests
             Assert.Throws<ArgumentOutOfRangeException>(() => mathFunctions.Root(value1, value2));
         }
 
-        // TODO: create one more math function
+        [Theory]
+        [InlineData(0, 0)]
+        [InlineData(1, 1)]
+        [InlineData(2, 1)]
+        [InlineData(3, 2)]
+        [InlineData(10, 55)]
+        [InlineData(20, 6765)]
+        [InlineData(40, 102334155)]
+        public void TestFibonacci(int value1, int expected_result)
+        {
+            Assert.Equal(mathFunctions.Fibbonacci(value1), expected_result);
+        }
+
+        [Theory]
+        [InlineData(-3)]
+        [InlineData(-3438965)]
+        public void TestFibonacciNegative(int value1)
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => mathFunctions.Fibbonacci(value1));
+        }
     }
 }

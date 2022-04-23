@@ -112,10 +112,33 @@ namespace MathFunctions
             }
         }
 
-        // TODO: one more math function
-        public float TODO(float a)
+        public float Fibbonacci(int a)
         {
-            throw new NotImplementedException();
+            if (a < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            if (a == 0)
+            {
+                return 0;
+            }
+            if (a == 1 || a == 2)
+            {
+                return 1;
+            }
+
+            int first = 1;
+            int second = 1;
+
+            for (int i = 0; i < a - 2; i++)
+            {
+                first += second;
+                int tmp = first;
+                first = second;
+                second = tmp;
+            }
+
+            return second;
         }
     }
 }

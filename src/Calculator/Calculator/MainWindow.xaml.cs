@@ -1,5 +1,6 @@
 ﻿using Calculator.Models;
 using MathFunctions;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -28,6 +29,9 @@ namespace Calculator
 
         }
 
+        /// <summary>
+        /// Event handler for numbers
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (LastOperation != OperationEnum.Number)
@@ -40,6 +44,11 @@ namespace Calculator
             resultTextBox.Text = float.Parse(resultTextBox.Text + button.Content).ToString();
         }
 
+        /// <summary>
+        /// Event handler for Factorial
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Factorial_Click(object sender, RoutedEventArgs e)
         {
             int a;
@@ -62,6 +71,11 @@ namespace Calculator
             CalcAction = OperationEnum.Substract;
         }
 
+        /// <summary>
+        /// Event hadler for Result
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Result_Click(object sender, RoutedEventArgs e)
         {
             if (valueStack != null)
@@ -73,6 +87,11 @@ namespace Calculator
             CalcAction = OperationEnum.Result;
         }
 
+        /// <summary>
+        /// Clear values
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Clear_Click(object sender, RoutedEventArgs e)
         {
             resultTextBox.Text = "0";
@@ -83,7 +102,15 @@ namespace Calculator
         private void resultTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             float result;
-            bool valid = float.TryParse(resultTextBox.Text, out result);
+            string resultText = resultTextBox.Text;
+
+            if (resultText == "")
+            {
+                resultTextBox.Text = "0";
+                return;
+            }
+
+            bool valid = float.TryParse(resultText, out result);
 
             if (valid)
             {
