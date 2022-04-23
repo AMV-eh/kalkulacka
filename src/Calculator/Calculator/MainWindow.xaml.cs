@@ -48,7 +48,7 @@ namespace Calculator
             if (NextDecimal)
             {
                 NextDecimal = false;
-                result = float.Parse(resultTextBox.Text + "," + button.Content).ToString();
+                result = float.Parse(resultTextBox.Text).ToString() + ",";
             }
             else
             {
@@ -60,6 +60,7 @@ namespace Calculator
         private void Button_Mantisa_Click(object sender, RoutedEventArgs e)
         {
             NextDecimal = true;
+            Button_Click(sender, e);
         }
 
         /// <summary>
@@ -119,7 +120,6 @@ namespace Calculator
 
         private void resultTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            float result;
             string resultText = resultTextBox.Text;
 
             if (resultText == "")
@@ -128,11 +128,15 @@ namespace Calculator
                 return;
             }
 
+            float result;
             bool valid = float.TryParse(resultText, out result);
 
+
+            // If string is not valid, replace it with last one
             if (valid)
             {
-                LastResult = result.ToString();
+                LastResult = resultText;
+                resultTextBox.Text = resultText;
             }
             else
             {
@@ -219,7 +223,7 @@ namespace Calculator
             }
             Button button = (Button)sender;
             double cont = double.Parse(resultTextBox.Text);
-            resultTextBox.Text = Math.Pow(cont,2).ToString();
+            resultTextBox.Text = Math.Pow(cont, 2).ToString();
         }
 
         private void Button_nx_Click(object sender, RoutedEventArgs e)
