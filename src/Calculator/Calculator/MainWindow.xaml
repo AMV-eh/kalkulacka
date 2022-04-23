@@ -171,7 +171,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="," HorizontalAlignment="Left" Height="75" Margin="740,141,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="36" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black" Click="Button_Click">
+        <Button Content="," HorizontalAlignment="Left" Height="75" Margin="740,141,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="36" Background="White" BorderBrush="Black" BorderThickness="2" OpacityMask="Black" Click="Button_Mantisa_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>

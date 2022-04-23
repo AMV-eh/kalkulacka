@@ -18,6 +18,8 @@ namespace Calculator
 
         private float? valueStack;
 
+        private bool NextDecimal = false;
+
         private string LastResult { get; set; } = "0";
 
         public MainWindow()
@@ -41,7 +43,23 @@ namespace Calculator
             }
 
             Button button = (Button)sender;
-            resultTextBox.Text = float.Parse(resultTextBox.Text + button.Content).ToString();
+            string result;
+
+            if (NextDecimal)
+            {
+                NextDecimal = false;
+                result = float.Parse(resultTextBox.Text + "," + button.Content).ToString();
+            }
+            else
+            {
+                result = float.Parse(resultTextBox.Text + button.Content).ToString();
+            }
+            resultTextBox.Text = result;
+        }
+
+        private void Button_Mantisa_Click(object sender, RoutedEventArgs e)
+        {
+            NextDecimal = true;
         }
 
         /// <summary>
