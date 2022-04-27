@@ -19,11 +19,11 @@ namespace MathFunctionTests
         [InlineData(-10F, 5F, -5F)]
         [InlineData(1F, -0.5F, 0.5F)]
         [InlineData(-1F, -0.5F, -1.5F)]
-        [InlineData(float.MaxValue, float.MinValue, 0)]
-        [InlineData(float.MinValue, float.MaxValue, 0)]
-        [InlineData(float.MaxValue, 0, float.MaxValue)]
-        [InlineData(float.MinValue, 0, float.MinValue)]
-        public void TestSum(float value1, float value2, float expected_result)
+        [InlineData(double.MaxValue, double.MinValue, 0)]
+        [InlineData(double.MinValue, double.MaxValue, 0)]
+        [InlineData(double.MaxValue, 0, double.MaxValue)]
+        [InlineData(double.MinValue, 0, double.MinValue)]
+        public void TestSum(double value1, double value2, double expected_result)
         {
             Assert.Equal(mathFunctions.Sum(value1, value2), expected_result);
         }
@@ -35,11 +35,11 @@ namespace MathFunctionTests
         [InlineData(5F, -5F, 10F)]
         [InlineData(0.5F, -1.1F, 1.6F)]
         [InlineData(-0.5F, -1.1F, 0.6F)]
-        [InlineData(float.MaxValue, -float.MinValue, 0)]
-        [InlineData(float.MinValue, -float.MaxValue, 0)]
-        [InlineData(float.MaxValue, 0, float.MaxValue)]
-        [InlineData(float.MinValue, 0, float.MinValue)]
-        public void TestSubstract(float value1, float value2, float expected_result)
+        [InlineData(double.MaxValue, -double.MinValue, 0)]
+        [InlineData(double.MinValue, -double.MaxValue, 0)]
+        [InlineData(double.MaxValue, 0, double.MaxValue)]
+        [InlineData(double.MinValue, 0, double.MinValue)]
+        public void TestSubstract(double value1, double value2, double expected_result)
         {
             Assert.Equal(mathFunctions.Substract(value1, value2), expected_result);
         }
@@ -52,12 +52,12 @@ namespace MathFunctionTests
         [InlineData(0.5F, -2F, -1F)]
         [InlineData(-0.5F, -2F, 1F)]
         [InlineData(-0.5F, 0, 0)]
-        [InlineData(float.MaxValue, 1, float.MaxValue)]
-        [InlineData(1, float.MaxValue, float.MaxValue)]
-        [InlineData(float.MaxValue, 0, 0)]
-        [InlineData(float.MinValue, 1, float.MinValue)]
-        [InlineData(float.MinValue, 0, 0)]
-        public void TestMultiply(float value1, float value2, float expected_result)
+        [InlineData(double.MaxValue, 1, double.MaxValue)]
+        [InlineData(1, double.MaxValue, double.MaxValue)]
+        [InlineData(double.MaxValue, 0, 0)]
+        [InlineData(double.MinValue, 1, double.MinValue)]
+        [InlineData(double.MinValue, 0, 0)]
+        public void TestMultiply(double value1, double value2, double expected_result)
         {
             Assert.Equal(mathFunctions.Multiply(value1, value2), expected_result);
         }
@@ -68,9 +68,9 @@ namespace MathFunctionTests
         [InlineData(-5F, 5F, -1F)]
         [InlineData(2F, -5F, -0.4F)]
         [InlineData(-0.5F, -1F, 0.5F)]
-        [InlineData(float.MaxValue, 1, float.MaxValue)]
-        [InlineData(float.MinValue, 1, float.MinValue)]
-        public void TestDivision(float value1, float value2, float expected_result)
+        [InlineData(double.MaxValue, 1, double.MaxValue)]
+        [InlineData(double.MinValue, 1, double.MinValue)]
+        public void TestDivision(double value1, double value2, double expected_result)
         {
             Assert.Equal(mathFunctions.Divide(value1, value2), expected_result);
         }
@@ -79,9 +79,9 @@ namespace MathFunctionTests
         [Theory]
         [InlineData(10F, 0)]
         [InlineData(-0.5F, 0)]
-        [InlineData(float.MaxValue, 0)]
-        [InlineData(float.MinValue, 0)]
-        public void TestDivisionByZero(float value1, float value2)
+        [InlineData(double.MaxValue, 0)]
+        [InlineData(double.MinValue, 0)]
+        public void TestDivisionByZero(double value1, double value2)
         {
             Assert.Throws<DivideByZeroException>(() => mathFunctions.Divide(value1, value2));
         }
@@ -92,7 +92,7 @@ namespace MathFunctionTests
         [InlineData(2, 2)]
         [InlineData(5, 120)]
         [InlineData(10, 3628800)]
-        public void TestFactorial(int value1, float expected_result)
+        public void TestFactorial(int value1, double expected_result)
         {
             Assert.Equal(mathFunctions.Factorial(value1), expected_result);
         }
@@ -115,11 +115,11 @@ namespace MathFunctionTests
         [InlineData(-5F, 2, 25F)]
         [InlineData(-5F, 3, -125F)]
         [InlineData(1, int.MaxValue, 1)]
-        [InlineData(float.MaxValue, 1, float.MaxValue)]
-        [InlineData(float.MinValue, 1, float.MinValue)]
-        [InlineData(float.MaxValue, 0, 1)]
-        [InlineData(float.MinValue, 0, 1)]
-        public void TestPower(float value1, int value2, float expected_result)
+        [InlineData(double.MaxValue, 1, double.MaxValue)]
+        [InlineData(double.MinValue, 1, double.MinValue)]
+        [InlineData(double.MaxValue, 0, 1)]
+        [InlineData(double.MinValue, 0, 1)]
+        public void TestPower(double value1, int value2, double expected_result)
         {
             Assert.Equal(mathFunctions.Power(value1, value2), expected_result);
         }
@@ -128,7 +128,7 @@ namespace MathFunctionTests
         [InlineData(10, -1)]
         [InlineData(3, -10)]
         [InlineData(5, int.MinValue)]
-        public void TestPowerNegative(float value1, int value2)
+        public void TestPowerNegative(double value1, int value2)
         {
             Assert.Throws<ArgumentOutOfRangeException>(() => mathFunctions.Power(value1, value2));
         }
@@ -149,10 +149,10 @@ namespace MathFunctionTests
         [InlineData(1073741824F, 3, 1024F)]
         [InlineData(19683F, 9, 3F)]
         [InlineData(9765625F, 10, 5F)]
-        [InlineData(float.MaxValue, 1, float.MaxValue)]
-        [InlineData(float.MinValue, 1, float.MinValue)]
+        [InlineData(double.MaxValue, 1, double.MaxValue)]
+        [InlineData(double.MinValue, 1, double.MinValue)]
         [InlineData(1, int.MaxValue, 1)]
-        public void TestRoot(float value1, int value2, float expected_result)
+        public void TestRoot(double value1, int value2, double expected_result)
         {
             Assert.Equal(mathFunctions.Root(value1, value2), expected_result);
         }
@@ -162,7 +162,7 @@ namespace MathFunctionTests
         [InlineData(10, -1)]
         [InlineData(3, -10)]
         [InlineData(5, int.MinValue)]
-        public void TestRootNegative(float value1, int value2)
+        public void TestRootNegative(double value1, int value2)
         {
             Assert.Throws<ArgumentOutOfRangeException>(() => mathFunctions.Root(value1, value2));
         }

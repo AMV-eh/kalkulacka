@@ -1,8 +1,10 @@
 ﻿using Calculator.Models;
 using MathFunctions;
 using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Calculator
 {
@@ -29,6 +31,7 @@ namespace Calculator
             CalcAction = OperationEnum.NoOperation;
             LastOperation = OperationEnum.NoOperation;
             this.ResizeMode = ResizeMode.NoResize;
+            this.KeyDown += HandleKeyPress;
 
             InitializeComponent();
         }
@@ -97,7 +100,7 @@ namespace Calculator
             else
             {
                 Process();
-                CalcAction = OperationEnum.Substract;
+                CalcAction = OperationEnum.Subtract;
             }
         }
 
@@ -275,6 +278,25 @@ namespace Calculator
             int result = (int)MathFunction.Fibbonacci(a);
 
             resultTextBox.Text = $"{result}";
+        }
+
+        private void HandleKeyPress(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.OemPlus:
+                    Button_Plus_Click(new Button(), new RoutedEventArgs());
+                    break;
+                case Key.OemMinus:
+                    Button_Minus_Click(new Button(), new RoutedEventArgs());
+                    break;
+                case Key.Multiply:
+                    Button_Multiply_Click(new Button(), new RoutedEventArgs());
+                    break;
+                case Key.Oem2:
+                    Button_Divide_Click(new object(), new RoutedEventArgs());
+                    break;
+            }
         }
     }
 }

@@ -17,22 +17,22 @@ namespace MathFunctions
         }
 
         // Here comes all math functions
-        public float Sum(float a, float b)
+        public double Sum(double a, double b)
         {
             return a + b;
         }
 
-        public float Substract(float a, float b)
+        public double Substract(double a, double b)
         {
             return a - b;
         }
 
-        public float Multiply(float a, float b)
+        public double Multiply(double a, double b)
         {
             return a * b;
         }
 
-        public float Divide(float a, float b)
+        public double Divide(double a, double b)
         {
             if (b == 0)
             {
@@ -56,9 +56,9 @@ namespace MathFunctions
             return result;
         }
 
-        public float Power(float a, int b)
+        public double Power(double a, int b)
         {
-            float result = 1;
+            double result = 1;
             if (b < 0)
             {
                 throw new ArgumentOutOfRangeException();
@@ -70,7 +70,7 @@ namespace MathFunctions
             return result;
         }
 
-        public float Root(float a, int b)
+        public double Root(double a, int b)
         {
             if (b <= 0)
             {
@@ -99,7 +99,7 @@ namespace MathFunctions
             {
                 // Rounding number to X digits to eliminate inaccuracy
                 double result = Math.Pow(a, 1F / b);
-                return (float)Math.Round(result, round_coeficient);
+                return (double)Math.Round(result, round_coeficient);
             }
             else
             {
@@ -108,11 +108,11 @@ namespace MathFunctions
 
                 // Rounding number to X digits to eliminate inaccuracy
                 double result = -Math.Pow(-a, 1F / b);
-                return (float)Math.Round(result, round_coeficient);
+                return (double)Math.Round(result, round_coeficient);
             }
         }
 
-        public float Fibbonacci(int a)
+        public double Fibbonacci(int a)
         {
             if (a < 0)
             {

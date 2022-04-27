@@ -31,7 +31,7 @@ namespace Calculator
             {
                 case OperationEnum.Sum:
                     return MathFunction.Sum(operand1, op2).ToString();
-                case OperationEnum.Substract:
+                case OperationEnum.Subtract:
                     return MathFunction.Substract(operand1, op2).ToString();
                 case OperationEnum.Multiply:
                     return MathFunction.Multiply(operand1, op2).ToString();

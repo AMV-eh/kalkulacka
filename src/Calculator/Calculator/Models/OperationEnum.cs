@@ -5,7 +5,7 @@
     {
         Number = 0,
         Sum = 1,
-        Substract = 2,
+        Subtract = 2,
         Multiply = 3,
         Divide = 4,
         Factorial = 5,
