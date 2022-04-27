@@ -16,9 +16,10 @@ namespace Calculator
 
         private OperationEnum LastOperation { get; set; }
 
-        private float? valueStack;
+        private double? valueStack;
 
         private bool NextDecimal = false;
+        private bool NextNegative = false;
 
         private string LastResult { get; set; } = "0";
 
@@ -27,8 +28,9 @@ namespace Calculator
             MathFunction = MathFunction.GetInstance();
             CalcAction = OperationEnum.NoOperation;
             LastOperation = OperationEnum.NoOperation;
-            InitializeComponent();
+            this.ResizeMode = ResizeMode.NoResize;
 
+            InitializeComponent();
         }
 
         /// <summary>
@@ -48,13 +50,14 @@ namespace Calculator
             if (NextDecimal)
             {
                 NextDecimal = false;
-                result = float.Parse(resultTextBox.Text).ToString() + ",";
+                result = double.Parse(resultTextBox.Text).ToString() + ",";
             }
             else
             {
-                result = float.Parse(resultTextBox.Text + button.Content).ToString();
+                result = double.Parse(resultTextBox.Text + button.Content).ToString();
             }
-            resultTextBox.Text = result;
+            resultTextBox.Text = (NextNegative ? "-" : "") + result;
+            NextNegative = false;
         }
 
         private void Button_Mantisa_Click(object sender, RoutedEventArgs e)
@@ -86,8 +89,16 @@ namespace Calculator
 
         private void Button_Minus_Click(object sender, RoutedEventArgs e)
         {
-            Process();
-            CalcAction = OperationEnum.Substract;
+            // Udelat z cisla zaporne cislo
+            if (LastOperation != OperationEnum.Number && LastOperation != OperationEnum.Result)
+            {
+                NextNegative = true;
+            }
+            else
+            {
+                Process();
+                CalcAction = OperationEnum.Substract;
+            }
         }
 
         /// <summary>
@@ -99,8 +110,8 @@ namespace Calculator
         {
             if (valueStack != null)
             {
-                resultTextBox.Text = OperationHelper.GetResult(CalcAction, (float)valueStack, float.Parse(resultTextBox.Text));
-                valueStack = float.Parse(resultTextBox.Text);
+                resultTextBox.Text = OperationHelper.GetResult(CalcAction, (double)valueStack, double.Parse(resultTextBox.Text));
+                valueStack = double.Parse(resultTextBox.Text);
             }
             LastOperation = OperationEnum.Result;
             CalcAction = OperationEnum.Result;
@@ -116,6 +127,7 @@ namespace Calculator
             resultTextBox.Text = "0";
             valueStack = null;
             CalcAction = OperationEnum.NoOperation;
+            LastOperation = OperationEnum.NoOperation;
         }
 
         private void resultTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -128,22 +140,41 @@ namespace Calculator
                 return;
             }
 
-            float result;
-            bool valid = float.TryParse(resultText, out result);
-
+            double result;
+            bool valid = double.TryParse(resultText, out result);
+            bool select_end = false;
 
             // If string is not valid, replace it with last one
             if (valid)
             {
+                select_end = LastResult == "0" && result % 10 != 0;
                 LastResult = resultText;
-                resultTextBox.Text = result.ToString();
+
+                if (!string.IsNullOrEmpty(resultText))
+                {
+                    if (resultText[^1] == ',')
+                    {
+                        resultTextBox.Text = result.ToString() + ',';
+                    }
+                    else
+                    {
+                        resultTextBox.Text = result.ToString();
+                    }
+                }
+                else
+                {
+                    resultTextBox.Text = result.ToString();
+                }
             }
             else
             {
                 resultTextBox.Text = LastResult;
             }
 
-            resultTextBox.Select(resultTextBox.Text.Length, 0);
+            if (select_end)
+            {
+                resultTextBox.Select(resultTextBox.Text.Length, 0);
+            }
         }
 
         private bool Process()
@@ -166,12 +197,12 @@ namespace Calculator
 
             if (valueStack == null)
             {
-                valueStack = float.Parse(resultTextBox.Text);
+                valueStack = double.Parse(resultTextBox.Text);
             }
             else
             {
-                resultTextBox.Text = OperationHelper.GetResult(CalcAction, (float)valueStack, float.Parse(resultTextBox.Text));
-                valueStack = float.Parse(resultTextBox.Text);
+                resultTextBox.Text = OperationHelper.GetResult(CalcAction, (double)valueStack, double.Parse(resultTextBox.Text));
+                valueStack = double.Parse(resultTextBox.Text);
             }
 
             LastOperation = CalcAction;
@@ -199,8 +230,7 @@ namespace Calculator
                 LastOperation = OperationEnum.Number;
             }
 
-            Button button = (Button)sender;
-            resultTextBox.Text = double.Parse(resultTextBox.Text + Math.PI).ToString();
+            resultTextBox.Text = Math.PI.ToString();
         }
 
         private void Button_E_Click(object sender, RoutedEventArgs e)
@@ -211,9 +241,7 @@ namespace Calculator
                 LastOperation = OperationEnum.Number;
             }
 
-            Button button = (Button)sender;
-            resultTextBox.Text = double.Parse(resultTextBox.Text + Math.E).ToString();
-
+            resultTextBox.Text = Math.E.ToString();
         }
 
         private void Button_n2_Click(object sender, RoutedEventArgs e)
@@ -223,7 +251,6 @@ namespace Calculator
                 resultTextBox.Text = "0";
                 LastOperation = OperationEnum.Number;
             }
-            Button button = (Button)sender;
             double cont = double.Parse(resultTextBox.Text);
             resultTextBox.Text = Math.Pow(cont, 2).ToString();
         }

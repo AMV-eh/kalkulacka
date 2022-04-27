@@ -11,13 +11,13 @@ namespace Calculator
     {
         private static MathFunction MathFunction = MathFunction.GetInstance();
 
-        public static string GetResult(OperationEnum operation, float operand1, float? operand2 = null)
+        public static string GetResult(OperationEnum operation, double operand1, double? operand2 = null)
         {
-            float op2 = 0;
+            double op2 = 0;
 
             if (operation != OperationEnum.Factorial && operation != OperationEnum.Fibonnacci)
             {
-                op2 = (float)operand2;
+                op2 = (double)operand2;
             }
             else
             {
