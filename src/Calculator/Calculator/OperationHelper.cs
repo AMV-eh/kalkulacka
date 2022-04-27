@@ -36,7 +36,7 @@ namespace Calculator
                 case OperationEnum.Multiply:
                     return MathFunction.Multiply(operand1, op2).ToString();
                 case OperationEnum.Divide:
-                    if(op2 == 0)
+                    if (op2 == 0)
                     {
                         MessageBox.Show("Nulou dělit nelze!");
                         break;
@@ -47,19 +47,33 @@ namespace Calculator
                 case OperationEnum.Factorial:
                     return MathFunction.Factorial((int)operand1).ToString();
                 case OperationEnum.Power:
-                    return MathFunction.Power(operand1, (int)op2).ToString();
-                case OperationEnum.Root:
-                    return MathFunction.Root(operand1, (int)op2).ToString();
-                case OperationEnum.Fibonnacci:
-                    if (operand1 < 0)
+                    if (op2 < 0)
                     {
-                        MessageBox.Show("Nelze použít číslo menší jak 0!");
+                        MessageBox.Show("Musí být přirozené číslo!");
                         break;
                     }
                     else
                     {
-                        return MathFunction.Fibbonacci((int)operand1).ToString();
+                        return MathFunction.Power(operand1, (int)op2).ToString();
                     }
+                case OperationEnum.Root:
+                    if(op2 <= 0)
+                    {
+                        MessageBox.Show("Musí být číslo větší než 0!");
+                        break;
+                    }
+                    else if ((op2 % 2 == 0) && (operand1 < 0))
+                    {
+                        MessageBox.Show("Nelze provést operaci!");
+                        break;
+                    }
+                    else
+                    {
+                        return MathFunction.Root(operand1, (int)op2).ToString();
+                    }
+                    
+                case OperationEnum.Fibonnacci:
+                    return MathFunction.Fibbonacci((int)operand1).ToString();
             }
 
             return null;

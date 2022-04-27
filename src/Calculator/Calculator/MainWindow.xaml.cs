@@ -76,12 +76,18 @@ namespace Calculator
         /// <param name="e"></param>
         private void Button_Factorial_Click(object sender, RoutedEventArgs e)
         {
-            int a;
-            int.TryParse(resultTextBox.Text, out a);
-
-            int result = MathFunction.Factorial(a);
-
+            double a;
+            double.TryParse(resultTextBox.Text, out a);
+            if ((a < 0) || (a % 1 != 0))
+            {
+                MessageBox.Show("Faktorial musí být kladné celé číslo");
+                resultTextBox.Text = "0";
+            }
+            else
+            {
+            int result = MathFunction.Factorial((int)a);
             resultTextBox.Text = $"{result}";
+            }
         }
 
         private void Button_Plus_Click(object sender, RoutedEventArgs e)
@@ -272,12 +278,18 @@ namespace Calculator
 
         private void Button_fib_Click(object sender, RoutedEventArgs e)
         {
-            int a;
-            int.TryParse(resultTextBox.Text, out a);
-
-            int result = (int)MathFunction.Fibbonacci(a);
-
-            resultTextBox.Text = $"{result}";
+            double a;
+            double.TryParse(resultTextBox.Text, out a);
+            if ((a < 0) || (a % 1 != 0))
+            {
+                MessageBox.Show("Fib musí být kladné celé číslo");
+                resultTextBox.Text = "0";
+            }
+            else
+            {
+                int result = (int)MathFunction.Fibbonacci((int)a);
+                resultTextBox.Text = $"{result}";
+            }
         }
 
         private void HandleKeyPress(object sender, KeyEventArgs e)
