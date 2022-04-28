@@ -1,3 +1,3 @@
-xnguye22 100(instalátor,testy,debugging)
-xwagne12 100(matematické operace, matematická funkce navíc)
-xkalaa00 100(GUI, mockup, uzivatelska prirucka)
+xnguye22 100 (instalátor, testy, debugging, matematické operace, propojování GUI a backend, Makefile)
+xwagne12 100 (matematická funkce navíc, propojování GUI a backend)
+xkalaa00 100 (GUI, mockup, uzivatelska prirucka)
