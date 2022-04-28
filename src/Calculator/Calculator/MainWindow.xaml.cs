@@ -13,7 +13,6 @@ namespace Calculator
     public partial class MainWindow : Window
     {
         private MathFunction MathFunction { get; set; }
-<<<<<<< Updated upstream
         private OperationEnum CalcAction { get; set; }
 
         private OperationEnum LastOperation { get; set; }
@@ -24,11 +23,6 @@ namespace Calculator
         private bool NextNegative = false;
 
         private string LastResult { get; set; } = "0";
-=======
-        private CalcAction CalcAction { get; set; }
-
-
->>>>>>> Stashed changes
 
         public MainWindow()
         {
