@@ -1,6 +1,10 @@
 ﻿using Calculator.Models;
 using MathFunctions;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -154,6 +158,12 @@ namespace Calculator
             double result;
             bool valid = double.TryParse(resultText, out result);
             bool select_end = false;
+
+            if (result > 100000000000000000 || result < -100000000000000000)
+            {
+                resultTextBox.Text = LastResult;
+                return;
+            }
 
             // If string is not valid, replace it with last one
             if (valid)
