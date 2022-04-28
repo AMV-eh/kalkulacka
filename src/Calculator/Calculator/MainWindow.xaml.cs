@@ -1,7 +1,6 @@
 ﻿using Calculator.Models;
 using MathFunctions;
 using System;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -85,8 +84,8 @@ namespace Calculator
             }
             else
             {
-            int result = MathFunction.Factorial((int)a);
-            resultTextBox.Text = $"{result}";
+                int result = MathFunction.Factorial((int)a);
+                resultTextBox.Text = $"{result}";
             }
         }
 
@@ -204,7 +203,7 @@ namespace Calculator
                 return false;
             }
 
-            if (valueStack == null)
+            if (valueStack == null || CalcAction == OperationEnum.Result)
             {
                 valueStack = double.Parse(resultTextBox.Text);
             }
@@ -296,17 +295,28 @@ namespace Calculator
         {
             switch (e.Key)
             {
-                case Key.OemPlus:
+                case Key.Add:
                     Button_Plus_Click(new Button(), new RoutedEventArgs());
+                    resultTextBox.Text = "0";
                     break;
                 case Key.OemMinus:
                     Button_Minus_Click(new Button(), new RoutedEventArgs());
+                    resultTextBox.Text = "0";
                     break;
                 case Key.Multiply:
                     Button_Multiply_Click(new Button(), new RoutedEventArgs());
+                    resultTextBox.Text = "0";
                     break;
                 case Key.Oem2:
-                    Button_Divide_Click(new object(), new RoutedEventArgs());
+                    Button_Divide_Click(new Button(), new RoutedEventArgs());
+                    resultTextBox.Text = "0";
+                    break;
+                case Key.C:
+                    Button_Clear_Click(new Button(), new RoutedEventArgs());
+                    break;
+                case Key.Return:
+                case Key.OemPlus:
+                    Button_Result_Click(new Button(), new RoutedEventArgs());
                     break;
             }
         }

@@ -1,8 +1,5 @@
 ﻿using Calculator.Models;
 using MathFunctions;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 
 namespace Calculator
@@ -41,7 +38,8 @@ namespace Calculator
                         MessageBox.Show("Nulou dělit nelze!");
                         break;
                     }
-                    else { 
+                    else
+                    {
                         return MathFunction.Divide(operand1, op2).ToString();
                     }
                 case OperationEnum.Factorial:
@@ -57,7 +55,7 @@ namespace Calculator
                         return MathFunction.Power(operand1, (int)op2).ToString();
                     }
                 case OperationEnum.Root:
-                    if(op2 <= 0)
+                    if (op2 <= 0)
                     {
                         MessageBox.Show("Musí být číslo větší než 0!");
                         break;
@@ -71,7 +69,7 @@ namespace Calculator
                     {
                         return MathFunction.Root(operand1, (int)op2).ToString();
                     }
-                    
+
                 case OperationEnum.Fibonnacci:
                     return MathFunction.Fibbonacci((int)operand1).ToString();
             }
