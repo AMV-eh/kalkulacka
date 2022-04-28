@@ -13,7 +13,6 @@ namespace Calculator
     public partial class MainWindow : Window
     {
         private MathFunction MathFunction { get; set; }
-<<<<<<< Updated upstream
         private OperationEnum CalcAction { get; set; }
 
         private OperationEnum LastOperation { get; set; }
@@ -24,11 +23,6 @@ namespace Calculator
         private bool NextNegative = false;
 
         private string LastResult { get; set; } = "0";
-=======
-        private CalcAction CalcAction { get; set; }
-
-
->>>>>>> Stashed changes
 
         public MainWindow()
         {
@@ -143,6 +137,8 @@ namespace Calculator
             valueStack = null;
             CalcAction = OperationEnum.NoOperation;
             LastOperation = OperationEnum.NoOperation;
+            NextDecimal = false;
+            NextNegative = false;
         }
 
         private void resultTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -194,17 +190,18 @@ namespace Calculator
 
         private bool Process()
         {
-            //if (LastOperation == OperationEnum.Sum ||
-            //    LastOperation == OperationEnum.Substract ||
-            //    LastOperation == OperationEnum.Multiply ||
-            //    LastOperation == OperationEnum.Divide ||
-            //    LastOperation == OperationEnum.Factorial ||
-            //    LastOperation == OperationEnum.Power ||
-            //    LastOperation == OperationEnum.Root ||
-            //    LastOperation == OperationEnum.Fibonnacci)
-            //{
-            //    CalcAction = LastOperation;
-            //}
+            if (CalcAction == OperationEnum.Sum ||
+                CalcAction == OperationEnum.Subtract ||
+                CalcAction == OperationEnum.Multiply ||
+                CalcAction == OperationEnum.Divide ||
+                CalcAction == OperationEnum.Factorial ||
+                CalcAction == OperationEnum.Power ||
+                CalcAction == OperationEnum.Root ||
+                CalcAction == OperationEnum.Fibonnacci)
+            {
+                LastOperation = CalcAction;
+                return false;
+            }
             if (LastOperation != OperationEnum.Number && LastOperation != OperationEnum.NoOperation)
             {
                 return false;
@@ -302,30 +299,54 @@ namespace Calculator
         {
             switch (e.Key)
             {
-                case Key.Add:
+                case Key.Q:
                     Button_Plus_Click(new Button(), new RoutedEventArgs());
                     resultTextBox.Text = "0";
                     break;
-                case Key.OemMinus:
+                case Key.W:
                     Button_Minus_Click(new Button(), new RoutedEventArgs());
+                    NextNegative = false;
                     resultTextBox.Text = "0";
                     break;
-                case Key.Multiply:
+                case Key.E:
                     Button_Multiply_Click(new Button(), new RoutedEventArgs());
                     resultTextBox.Text = "0";
                     break;
-                case Key.Oem2:
+                case Key.R:
                     Button_Divide_Click(new Button(), new RoutedEventArgs());
                     resultTextBox.Text = "0";
                     break;
                 case Key.C:
                     Button_Clear_Click(new Button(), new RoutedEventArgs());
                     break;
-                case Key.Return:
-                case Key.OemPlus:
+                case Key.V:
                     Button_Result_Click(new Button(), new RoutedEventArgs());
                     break;
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(@"
+? - pro zobrazení této nápovědy
+
+n! - pro faktoriál n čísla
+n^2 - pro 2 mocninou n čísla
+n^x - pro x-tou mocninu n čísla
+x√(n) - pro x-tou odmocninu n čísla
+π - pro zapsání Ludolfova čísla (3.1415)
+e - pro zapsání Eulerova čísla (2.7182)
+fib - pro n-tý člen fibonacciho posloupnosti
+
+
++ - pro sčítání (na klávesnici Q)
+- - pro odečítání (na klávesnici W)
+x - pro násobení (na klávesnici E)
+÷ - pro dělení (na klávesnici R)
+C - pro smazání obsahu textové pole (na klávesnici C) 
+, - pro zapsání desetinného čísla (na klávesnici ,)
+= - pro vypsání výsledku (na klávesnici V)
+");
         }
     }
 }

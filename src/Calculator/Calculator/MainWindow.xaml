@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="480" Width="840">
+        Title="Eh Calculator" Height="480" Width="840">
     <Grid UseLayoutRounding="False">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -189,6 +189,13 @@
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="?" HorizontalAlignment="Center" VerticalAlignment="Center" Height="49" Width="36" FontSize="20" BorderThickness="5,5,5,5" Margin="18,357,0,0" BorderBrush="Black" FontWeight="UltraBlack" Click="Button_Click_1">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </Button.Resources>
         </Button>
