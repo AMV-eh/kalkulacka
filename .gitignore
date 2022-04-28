@@ -41,3 +41,4 @@ src/html/
 src/latex/
 
 # other files
+src/Calculator/.vs

@@ -15,8 +15,6 @@ Název týmu: `eh`
 - `xnguye22` Hoang Nam Nguyen 
 - `xwagne12` Michal Wagner 
 
-
-
 ## Licence
 -------
 
