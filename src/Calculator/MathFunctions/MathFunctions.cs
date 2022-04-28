@@ -2,9 +2,12 @@
 
 namespace MathFunctions
 {
+    /// <summary>
+    /// Class containing math functions 
+    /// Is based of Singleton design
+    /// </summary>
     public class MathFunction
     {
-        // Singleton class
         private static MathFunction instance = null;
 
         public static MathFunction GetInstance()
@@ -16,9 +19,8 @@ namespace MathFunctions
             return instance;
         }
 
-        // Here comes all math functions
         /// <summary>
-        /// Function for sum
+        /// Calculates Summary of 2 numbers
         /// </summary>
         /// <param name="a">Operand 1</param>
         /// <param name="b">Operand 2</param>
@@ -90,7 +92,7 @@ namespace MathFunctions
         /// </summary>
         /// <param name="a">Operand 1</param>
         /// <param name="b">Operand 2</param>
-        /// <returns>Result of power</returns>
+        /// <returns>A power on B</returns>
         public double Power(double a, int b)
         {
             double result = 1;
@@ -110,7 +112,7 @@ namespace MathFunctions
         /// </summary>
         /// <param name="a">Operand 1</param>
         /// <param name="b">Operand 2</param>
-        /// <returns>Result of root</returns>
+        /// <returns>Result of b-th root</returns>
         public double Root(double a, int b)
         {
             if (b <= 0)
@@ -157,7 +159,7 @@ namespace MathFunctions
         /// Function for fibbonacci
         /// </summary>
         /// <param name="a">Operand 1</param>
-        /// <returns>Result of fibbonacci</returns>
+        /// <returns>A-th fibbonacci sequence</returns>
         public double Fibbonacci(int a)
         {
             if (a < 0)

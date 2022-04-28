@@ -31,3 +31,18 @@ Tento program je poskytován pod licencí [GNU General Public License](LICENSE)
 4. Pro překlad a spuštění stiskněte klávesu `F5`
 5. Přeložené soubory najdete ve složce `src/Calculator/Calculator/bin/Debug/netcoreapp3.1/`
 6. Spustíte dvojklikem na `Calculator.exe`
+
+
+
+## Struktura projektu
+- `installer` - složka s instalátorem
+- `src/` 
+  - `Calculator`
+    - `Calculator`
+      - `MainWindow.xaml` - GUI
+      - `MainWindow.xaml.cs` - Interakce s GUI
+      - `OperationHelper.cs` - Pomocné metody
+    - `MathFunctions`
+      - `MathFunctions.cs` - Matematická knihovna
+    - `MathFunctions.Tests`
+      - `MathFunctionTests.cs` - Testy pro matematickou knihovnu

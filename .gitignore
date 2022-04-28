@@ -36,4 +36,8 @@
 **/.vs
 
 
+# Doxy files
+src/html/
+src/latex/
+
 # other files

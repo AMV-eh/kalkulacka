@@ -16,7 +16,7 @@ namespace MathFunctionTests
         }
 
         /// <summary>
-        /// Test for sum function
+        /// Test for Sum function
         /// </summary>
         /// <param name="value1">Operand 1</param>
         /// <param name="value2">Operand 2</param>
@@ -97,7 +97,7 @@ namespace MathFunctionTests
         }
 
         /// <summary>
-        /// Test for Division by zero function
+        /// Test for Division by zero
         /// </summary>
         /// <param name="value1">Operand 1</param>
         /// <param name="value2">Operand 2</param>
@@ -221,7 +221,7 @@ namespace MathFunctionTests
         }
 
         /// <summary>
-        /// Test for Fibonacci function
+        /// Test for Fibonacci sequence
         /// </summary>
         /// <param name="value1">Operand 1</param>
         /// <param name="expected_result">Expected result of fibonacci</param>
@@ -239,7 +239,7 @@ namespace MathFunctionTests
         }
 
         /// <summary>
-        /// Test for negative fibonacci
+        /// Test for negative Fibonacci
         /// </summary>
         /// <param name="value1">Operand 1</param>
         [Theory]

@@ -4,10 +4,20 @@ using System.Windows;
 
 namespace Calculator
 {
+    /// <summary>
+    /// Class containing helper functions
+    /// </summary>
     public static class OperationHelper
     {
         private static MathFunction MathFunction = MathFunction.GetInstance();
 
+        /// <summary>
+        /// Returns result of performed operation
+        /// </summary>
+        /// <param name="operation"></param>
+        /// <param name="operand1"></param>
+        /// <param name="operand2"></param>
+        /// <returns></returns>
         public static string GetResult(OperationEnum operation, double operand1, double? operand2 = null)
         {
             double op2 = 0;
@@ -24,6 +34,7 @@ namespace Calculator
                 }
             }
 
+            // select an operation
             switch (operation)
             {
                 case OperationEnum.Sum:
@@ -75,6 +86,6 @@ namespace Calculator
             }
 
             return null;
-        }
+        } // public static string GetResult(OperationEnum operation, double operand1, double? operand2 = null)
     }
 }
