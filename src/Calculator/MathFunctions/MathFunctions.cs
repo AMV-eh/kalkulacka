@@ -17,21 +17,45 @@ namespace MathFunctions
         }
 
         // Here comes all math functions
+        /// <summary>
+        /// Function for sum
+        /// </summary>
+        /// <param name="a">Operand 1</param>
+        /// <param name="b">Operand 2</param>
+        /// <returns>Sum of two numbers</param>
         public double Sum(double a, double b)
         {
             return a + b;
         }
 
+        /// <summary>
+        /// Function for substraction
+        /// </summary>
+        /// <param name="a">Operand 1</param>
+        /// <param name="b">Operand 2</param>
+        /// <returns>Substraction of two numbers</param>
         public double Substract(double a, double b)
         {
             return a - b;
         }
 
+        /// <summary>
+        /// Function for multiplication
+        /// </summary>
+        /// <param name="a">Operand 1</param>
+        /// <param name="b">Operand 2</param>
+        /// <returns>Result of multiplication</param>
         public double Multiply(double a, double b)
         {
             return a * b;
         }
 
+        /// <summary>
+        /// Function for division
+        /// </summary>
+        /// <param name="a">Operand 1</param>
+        /// <param name="b">Operand 2</param>
+        /// <returns>Result of division</param>
         public double Divide(double a, double b)
         {
             if (b == 0)
@@ -41,6 +65,11 @@ namespace MathFunctions
             return a / b;
         }
 
+        /// <summary>
+        /// Function for factorial
+        /// </summary>
+        /// <param name="a">Operand 1</param>
+        /// <returns>Result of factorial</param>
         public int Factorial(int a)
         {
             if (a < 0)
@@ -56,6 +85,12 @@ namespace MathFunctions
             return result;
         }
 
+        /// <summary>
+        /// Function for power
+        /// </summary>
+        /// <param name="a">Operand 1</param>
+        /// <param name="b">Operand 2</param>
+        /// <returns>Result of power</returns>
         public double Power(double a, int b)
         {
             double result = 1;
@@ -70,6 +105,12 @@ namespace MathFunctions
             return result;
         }
 
+        /// <summary>
+        /// Function for root
+        /// </summary>
+        /// <param name="a">Operand 1</param>
+        /// <param name="b">Operand 2</param>
+        /// <returns>Result of root</returns>
         public double Root(double a, int b)
         {
             if (b <= 0)
@@ -112,6 +153,11 @@ namespace MathFunctions
             }
         }
 
+        /// <summary>
+        /// Function for fibbonacci
+        /// </summary>
+        /// <param name="a">Operand 1</param>
+        /// <returns>Result of fibbonacci</returns>
         public double Fibbonacci(int a)
         {
             if (a < 0)

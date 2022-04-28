@@ -16,18 +16,37 @@ namespace Calculator
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Mathematical functions
+        /// </summary>
         private MathFunction MathFunction { get; set; }
+        /// <summary>
+        /// Operators
+        /// </summary>
         private OperationEnum CalcAction { get; set; }
-
+        /// <summary>
+        /// Last operation
+        /// </summary>
         private OperationEnum LastOperation { get; set; }
-
+        /// <summary>
+        /// Stack for previous numbers
+        /// </summary>
         private double? valueStack;
-
+        /// <summary>
+        /// Variable to check if next number is decimal
+        /// </summary>
         private bool NextDecimal = false;
+        /// <summary>
+        /// Variable to check if next number is negative
+        /// </summary>
         private bool NextNegative = false;
-
+        /// <summary>
+        /// Variable with last result
+        /// </summary>
         private string LastResult { get; set; } = "0";
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MainWindow()
         {
             MathFunction = MathFunction.GetInstance();
@@ -43,6 +62,8 @@ namespace Calculator
         /// <summary>
         /// Event handler for numbers
         /// </summary>
+        /// <param name="sender">Source element</param>
+        /// <param name="e">Event arguments</param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (LastOperation != OperationEnum.Number)
@@ -67,6 +88,11 @@ namespace Calculator
             NextNegative = false;
         }
 
+        /// <summary>
+        /// Event handler for mantisa
+        /// </summary>
+        /// <param name="sender">Source element</param>
+        /// <param name="e">Event arguments</param>
         private void Button_Mantisa_Click(object sender, RoutedEventArgs e)
         {
             NextDecimal = true;
@@ -74,10 +100,10 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Event handler for Factorial
+        /// Event handler for factorial
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Source element</param>
+        /// <param name="e">Event arguments</param>
         private void Button_Factorial_Click(object sender, RoutedEventArgs e)
         {
             double a;
@@ -94,12 +120,22 @@ namespace Calculator
             }
         }
 
+        /// <summary>
+        /// Event handler for addition
+        /// </summary>
+        /// <param name="sender">Source element</param>
+        /// <param name="e">Event arguments</param>
         private void Button_Plus_Click(object sender, RoutedEventArgs e)
         {
             Process();
             CalcAction = OperationEnum.Sum;
         }
 
+        /// <summary>
+        /// Event handler for substraction
+        /// </summary>
+        /// <param name="sender">Source element</param>
+        /// <param name="e">Event arguments</param>
         private void Button_Minus_Click(object sender, RoutedEventArgs e)
         {
             // Udelat z cisla zaporne cislo
@@ -115,10 +151,10 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Event hadler for Result
+        /// Event hadler for result
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Source element</param>
+        /// <param name="e">Event arguments</param>
         private void Button_Result_Click(object sender, RoutedEventArgs e)
         {
             if (valueStack != null)
@@ -133,8 +169,8 @@ namespace Calculator
         /// <summary>
         /// Clear values
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Source element</param>
+        /// <param name="e">Event arguments</param>
         private void Button_Clear_Click(object sender, RoutedEventArgs e)
         {
             resultTextBox.Text = "0";
@@ -145,6 +181,11 @@ namespace Calculator
             NextNegative = false;
         }
 
+        /// <summary>
+        /// Event hadler for resultTextBox. Its called when value in resultTextBox is changed
+        /// </summary>
+        /// <param name="sender">Source element</param>
+        /// <param name="e">Event arguments</param>
         private void resultTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             string resultText = resultTextBox.Text;
@@ -198,6 +239,10 @@ namespace Calculator
             }
         }
 
+        /// <summary>
+        /// Function for processing math operations.
+        /// </summary>
+        /// <returns>True if calculated/False if not calculated</returns>
         private bool Process()
         {
             if (CalcAction == OperationEnum.Sum ||
@@ -232,18 +277,33 @@ namespace Calculator
             return true;
         }
 
+        /// <summary>
+        /// Event handler for multiplication
+        /// </summary>
+        /// <param name="sender">Source element</param>
+        /// <param name="e">Event arguments</param>
         private void Button_Multiply_Click(object sender, RoutedEventArgs e)
         {
             Process();
             CalcAction = OperationEnum.Multiply;
         }
 
+        /// <summary>
+        /// Event handler for division
+        /// </summary>
+        /// <param name="sender">Source element</param>
+        /// <param name="e">Event arguments</param>
         private void Button_Divide_Click(object sender, RoutedEventArgs e)
         {
             Process();
             CalcAction = OperationEnum.Divide;
         }
 
+        /// <summary>
+        /// Event handler for pi
+        /// </summary>
+        /// <param name="sender">Source element</param>
+        /// <param name="e">Event arguments</param>
         private void Button_Pi_Click(object sender, RoutedEventArgs e)
         {
             if (LastOperation != OperationEnum.Number)
@@ -255,6 +315,11 @@ namespace Calculator
             resultTextBox.Text = Math.PI.ToString();
         }
 
+        /// <summary>
+        /// Event handler for E
+        /// </summary>
+        /// <param name="sender">Source element</param>
+        /// <param name="e">Event arguments</param>
         private void Button_E_Click(object sender, RoutedEventArgs e)
         {
             if (LastOperation != OperationEnum.Number)
@@ -266,6 +331,11 @@ namespace Calculator
             resultTextBox.Text = Math.E.ToString();
         }
 
+        /// <summary>
+        /// Event handler for power^2
+        /// </summary>
+        /// <param name="sender">Source element</param>
+        /// <param name="e">Event arguments</param>
         private void Button_n2_Click(object sender, RoutedEventArgs e)
         {
             if (LastOperation != OperationEnum.Number)
@@ -277,18 +347,33 @@ namespace Calculator
             resultTextBox.Text = Math.Pow(cont, 2).ToString();
         }
 
+        /// <summary>
+        /// Event handler for power^x
+        /// </summary>
+        /// <param name="sender">Source element</param>
+        /// <param name="e">Event arguments</param>
         private void Button_nx_Click(object sender, RoutedEventArgs e)
         {
             Process();
             CalcAction = OperationEnum.Power;
         }
 
+        /// <summary>
+        /// Event handler for root
+        /// </summary>
+        /// <param name="sender">Source element</param>
+        /// <param name="e">Event arguments</param>
         private void Button_Root_Click(object sender, RoutedEventArgs e)
         {
             Process();
             CalcAction = OperationEnum.Root;
         }
 
+        /// <summary>
+        /// Event handler for fibbonacci
+        /// </summary>
+        /// <param name="sender">Source element</param>
+        /// <param name="e"></param>
         private void Button_fib_Click(object sender, RoutedEventArgs e)
         {
             double a;
@@ -305,6 +390,11 @@ namespace Calculator
             }
         }
 
+        /// <summary>
+        /// Event handler for keyboard operations
+        /// </summary>
+        /// <param name="sender">Source element</param>
+        /// <param name="e">Event arguments</param>
         private void HandleKeyPress(object sender, KeyEventArgs e)
         {
             switch (e.Key)
@@ -335,7 +425,12 @@ namespace Calculator
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Event handler for help MessageBox 
+        /// </summary>
+        /// <param name="sender">Source element</param>
+        /// <param name="e">Event arguments</param>
+        private void Button_Help_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(@"
 ? - pro zobrazení této nápovědy

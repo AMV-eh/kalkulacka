@@ -1,6 +1,8 @@
 ﻿namespace Calculator.Models
 {
-
+    /// <summary>
+    /// Operators
+    /// </summary>
     public enum OperationEnum
     {
         Number = 0,
