@@ -12,40 +12,47 @@ using System.Windows.Input;
 namespace Calculator
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml.
     /// </summary>
     public partial class MainWindow : Window
     {
         /// <summary>
-        /// Mathematical functions
+        /// Mathematical functions.
         /// </summary>
         private MathFunction MathFunction { get; set; }
+
         /// <summary>
-        /// Operators
+        /// Current MATH operation (only MATH operations).
         /// </summary>
         private OperationEnum CalcAction { get; set; }
+
         /// <summary>
-        /// Last operation
+        /// Last operation (any).
         /// </summary>
         private OperationEnum LastOperation { get; set; }
+
         /// <summary>
-        /// Stack for previous numbers
+        /// Previous number (first operand).
         /// </summary>
         private double? valueStack;
+
         /// <summary>
-        /// Variable to check if next number is decimal
+        /// Variable to check if next number is decimal.
         /// </summary>
         private bool NextDecimal = false;
+
         /// <summary>
-        /// Variable to check if next number is negative
+        /// Variable to check if next number is negative.
         /// </summary>
         private bool NextNegative = false;
+
         /// <summary>
-        /// Variable with last result
+        /// Variable with last result (for rollbacking if non-digit value is inputted).
         /// </summary>
         private string LastResult { get; set; } = "0";
+
         /// <summary>
-        /// Constructor
+        /// Constructor.
         /// </summary>
         public MainWindow()
         {
@@ -60,7 +67,7 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Event handler for numbers
+        /// Event handler for number click.
         /// </summary>
         /// <param name="sender">Source element</param>
         /// <param name="e">Event arguments</param>
@@ -69,12 +76,12 @@ namespace Calculator
             if (LastOperation != OperationEnum.Number)
             {
                 resultTextBox.Text = "0";
-                LastOperation = OperationEnum.Number;
             }
 
             Button button = (Button)sender;
             string result;
 
+            // if next number should be decimal, append a comma
             if (NextDecimal)
             {
                 NextDecimal = false;
@@ -86,10 +93,12 @@ namespace Calculator
             }
             resultTextBox.Text = (NextNegative ? "-" : "") + result;
             NextNegative = false;
+
+            LastOperation = OperationEnum.Number;
         }
 
         /// <summary>
-        /// Event handler for mantisa
+        /// Event handler for mantisa.
         /// </summary>
         /// <param name="sender">Source element</param>
         /// <param name="e">Event arguments</param>
@@ -100,7 +109,7 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Event handler for factorial
+        /// Event handler for factorial.
         /// </summary>
         /// <param name="sender">Source element</param>
         /// <param name="e">Event arguments</param>
@@ -121,7 +130,7 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Event handler for addition
+        /// Event handler for addition.
         /// </summary>
         /// <param name="sender">Source element</param>
         /// <param name="e">Event arguments</param>
@@ -132,7 +141,7 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Event handler for substraction
+        /// Event handler for substraction.
         /// </summary>
         /// <param name="sender">Source element</param>
         /// <param name="e">Event arguments</param>
@@ -151,7 +160,7 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Event hadler for result
+        /// Event hadler for result.
         /// </summary>
         /// <param name="sender">Source element</param>
         /// <param name="e">Event arguments</param>
@@ -167,7 +176,7 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Clear values
+        /// Event handler for clearing values.
         /// </summary>
         /// <param name="sender">Source element</param>
         /// <param name="e">Event arguments</param>
@@ -182,7 +191,8 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Event hadler for resultTextBox. Its called when value in resultTextBox is changed
+        /// Event hadler for resultTextBox. 
+        /// Its called when value in resultTextBox is changed.
         /// </summary>
         /// <param name="sender">Source element</param>
         /// <param name="e">Event arguments</param>
@@ -190,6 +200,7 @@ namespace Calculator
         {
             string resultText = resultTextBox.Text;
 
+            // if result box is empty, write 0 into it
             if (resultText == "")
             {
                 resultTextBox.Text = "0";
@@ -200,13 +211,14 @@ namespace Calculator
             bool valid = double.TryParse(resultText, out result);
             bool select_end = false;
 
+            // if result is out of bounds, replace it with last one
             if (result > 100000000000000000 || result < -100000000000000000)
             {
                 resultTextBox.Text = LastResult;
                 return;
             }
 
-            // If string is not valid, replace it with last one
+            // If string is not valid, replace it with last one.
             if (valid)
             {
                 select_end = LastResult == "0" && result % 10 != 0;
@@ -237,7 +249,7 @@ namespace Calculator
             {
                 resultTextBox.Select(resultTextBox.Text.Length, 0);
             }
-        }
+        } // private void resultTextBox_TextChanged(object sender, TextChangedEventArgs e)
 
         /// <summary>
         /// Function for processing math operations.
@@ -245,20 +257,10 @@ namespace Calculator
         /// <returns>True if calculated/False if not calculated</returns>
         private bool Process()
         {
-            if (CalcAction == OperationEnum.Sum ||
-                CalcAction == OperationEnum.Subtract ||
-                CalcAction == OperationEnum.Multiply ||
-                CalcAction == OperationEnum.Divide ||
-                CalcAction == OperationEnum.Factorial ||
-                CalcAction == OperationEnum.Power ||
-                CalcAction == OperationEnum.Root ||
-                CalcAction == OperationEnum.Fibonnacci)
-            {
-                LastOperation = CalcAction;
-                return false;
-            }
+            // if last operation was numeric operation, dont calculate result
+
             if (LastOperation != OperationEnum.Number && LastOperation != OperationEnum.NoOperation)
-            {
+            {LastOperation = CalcAction;
                 return false;
             }
 
@@ -278,7 +280,7 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Event handler for multiplication
+        /// Event handler for multiplication.
         /// </summary>
         /// <param name="sender">Source element</param>
         /// <param name="e">Event arguments</param>
@@ -289,7 +291,7 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Event handler for division
+        /// Event handler for division.
         /// </summary>
         /// <param name="sender">Source element</param>
         /// <param name="e">Event arguments</param>
@@ -300,7 +302,7 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Event handler for pi
+        /// Event handler for pi.
         /// </summary>
         /// <param name="sender">Source element</param>
         /// <param name="e">Event arguments</param>
@@ -316,7 +318,7 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Event handler for E
+        /// Event handler for E.
         /// </summary>
         /// <param name="sender">Source element</param>
         /// <param name="e">Event arguments</param>
@@ -332,7 +334,7 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Event handler for power^2
+        /// Event handler for power^2.
         /// </summary>
         /// <param name="sender">Source element</param>
         /// <param name="e">Event arguments</param>
@@ -348,7 +350,7 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Event handler for power^x
+        /// Event handler for power^x.
         /// </summary>
         /// <param name="sender">Source element</param>
         /// <param name="e">Event arguments</param>
@@ -359,7 +361,7 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Event handler for root
+        /// Event handler for root.
         /// </summary>
         /// <param name="sender">Source element</param>
         /// <param name="e">Event arguments</param>
@@ -370,7 +372,7 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Event handler for fibbonacci
+        /// Event handler for fibbonacci.
         /// </summary>
         /// <param name="sender">Source element</param>
         /// <param name="e"></param>
@@ -391,7 +393,7 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Event handler for keyboard operations
+        /// Event handler for keyboard operations.
         /// </summary>
         /// <param name="sender">Source element</param>
         /// <param name="e">Event arguments</param>
@@ -426,7 +428,7 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Event handler for help MessageBox 
+        /// Event handler for help MessageBox.
         /// </summary>
         /// <param name="sender">Source element</param>
         /// <param name="e">Event arguments</param>
@@ -452,6 +454,6 @@ C - pro smazání obsahu textové pole (na klávesnici C)
 , - pro zapsání desetinného čísla (na klávesnici ,)
 = - pro vypsání výsledku (na klávesnici V)
 ");
-        }
+        } // private void Button_Help_Click(object sender, RoutedEventArgs e)
     }
 }
