@@ -1,1 +1,3 @@
-tento soubor bude obsahovat rozdil mezi planem projektu a skutecnosti
+Před začátkem práce na projektu jsme si rozdělili jednotlivé práce a deadliny, do kterých je budeme mít hotové.
+Zezačátku šlo všechno hladce a jednotlivé deadliny jsme i plnili. Bohužel, s přibývajícími testy a projekty do jiných předmětů 
+se to trochu rozhodilo. Ale až na profiling, který jsme nestihli, jsme dokončili vše podle plánu.
