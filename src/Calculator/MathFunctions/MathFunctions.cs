@@ -2,9 +2,12 @@
 
 namespace MathFunctions
 {
+    /// <summary>
+    /// Class containing math functions 
+    /// Is based of Singleton design
+    /// </summary>
     public class MathFunction
     {
-        // Singleton class
         private static MathFunction instance = null;
 
         public static MathFunction GetInstance()
@@ -16,23 +19,46 @@ namespace MathFunctions
             return instance;
         }
 
-        // Here comes all math functions
-        public float Sum(float a, float b)
+        /// <summary>
+        /// Calculates Summary of 2 numbers
+        /// </summary>
+        /// <param name="a">Operand 1</param>
+        /// <param name="b">Operand 2</param>
+        /// <returns>Sum of two numbers</param>
+        public double Sum(double a, double b)
         {
             return a + b;
         }
 
-        public float Substract(float a, float b)
+        /// <summary>
+        /// Function for substraction
+        /// </summary>
+        /// <param name="a">Operand 1</param>
+        /// <param name="b">Operand 2</param>
+        /// <returns>Substraction of two numbers</param>
+        public double Substract(double a, double b)
         {
             return a - b;
         }
 
-        public float Multiply(float a, float b)
+        /// <summary>
+        /// Function for multiplication
+        /// </summary>
+        /// <param name="a">Operand 1</param>
+        /// <param name="b">Operand 2</param>
+        /// <returns>Result of multiplication</param>
+        public double Multiply(double a, double b)
         {
             return a * b;
         }
 
-        public float Divide(float a, float b)
+        /// <summary>
+        /// Function for division
+        /// </summary>
+        /// <param name="a">Operand 1</param>
+        /// <param name="b">Operand 2</param>
+        /// <returns>Result of division</param>
+        public double Divide(double a, double b)
         {
             if (b == 0)
             {
@@ -41,6 +67,11 @@ namespace MathFunctions
             return a / b;
         }
 
+        /// <summary>
+        /// Function for factorial
+        /// </summary>
+        /// <param name="a">Operand 1</param>
+        /// <returns>Result of factorial</param>
         public int Factorial(int a)
         {
             if (a < 0)
@@ -56,9 +87,15 @@ namespace MathFunctions
             return result;
         }
 
-        public float Power(float a, int b)
+        /// <summary>
+        /// Function for power
+        /// </summary>
+        /// <param name="a">Operand 1</param>
+        /// <param name="b">Operand 2</param>
+        /// <returns>A power on B</returns>
+        public double Power(double a, int b)
         {
-            float result = 1;
+            double result = 1;
             if (b < 0)
             {
                 throw new ArgumentOutOfRangeException();
@@ -70,7 +107,13 @@ namespace MathFunctions
             return result;
         }
 
-        public float Root(float a, int b)
+        /// <summary>
+        /// Function for root
+        /// </summary>
+        /// <param name="a">Operand 1</param>
+        /// <param name="b">Operand 2</param>
+        /// <returns>Result of b-th root</returns>
+        public double Root(double a, int b)
         {
             if (b <= 0)
             {
@@ -99,7 +142,7 @@ namespace MathFunctions
             {
                 // Rounding number to X digits to eliminate inaccuracy
                 double result = Math.Pow(a, 1F / b);
-                return (float)Math.Round(result, round_coeficient);
+                return (double)Math.Round(result, round_coeficient);
             }
             else
             {
@@ -108,14 +151,42 @@ namespace MathFunctions
 
                 // Rounding number to X digits to eliminate inaccuracy
                 double result = -Math.Pow(-a, 1F / b);
-                return (float)Math.Round(result, round_coeficient);
+                return (double)Math.Round(result, round_coeficient);
             }
         }
 
-        // TODO: one more math function
-        public float TODO(float a)
+        /// <summary>
+        /// Function for fibbonacci
+        /// </summary>
+        /// <param name="a">Operand 1</param>
+        /// <returns>A-th fibbonacci sequence</returns>
+        public double Fibbonacci(int a)
         {
-            throw new NotImplementedException();
+            if (a < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            if (a == 0)
+            {
+                return 0;
+            }
+            if (a == 1 || a == 2)
+            {
+                return 1;
+            }
+
+            int first = 1;
+            int second = 1;
+
+            for (int i = 0; i < a - 2; i++)
+            {
+                first += second;
+                int tmp = first;
+                first = second;
+                second = tmp;
+            }
+
+            return second;
         }
     }
 }
