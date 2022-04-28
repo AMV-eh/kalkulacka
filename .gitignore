@@ -33,4 +33,12 @@
 **/obj/*
 
 # VS files
+**/.vs
+
+
+# Doxy files
+src/html/
+src/latex/
+
+# other files
 src/Calculator/.vs
